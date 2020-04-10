@@ -16,7 +16,7 @@ music = pyglet.media.Player()
 music.queue(theme_song)
 
 # Set up the two top labels
-score_label = pyglet.text.Label(text="Caught 0", x=15, y=75, batch=main_batch)
+score_label = pyglet.text.Label(text="Caught 0", x=15, y=15, batch=main_batch)
 
 # Initialize the player sprite
 hero = player.Player(x=400, y=300, batch=main_batch)
@@ -80,7 +80,7 @@ def update(dt):
             score += 1
             score_label.text = f"Caught {score}"
 
-            gotcha_sound_effect = pyglet.media.load('./resources/bullet.wav', streaming=False)
+            gotcha_sound_effect = pyglet.media.load('./resources/win.wav', streaming=False)
             gotcha_sound_effect.play()
 
             # Add a new monster
