@@ -1,5 +1,5 @@
 import pyglet
-from game import player, monster, resources
+from game import player, monster, goblin, resources
 from random import randint
 
 from config import WIDTH, HEIGHT
@@ -41,9 +41,9 @@ is_drawing = True  # Controls whether to show movement
 
 def game_over():
     global is_drawing
-
     is_drawing = False
     music.pause()
+    print('You Win')
 
 
 def update(dt):
