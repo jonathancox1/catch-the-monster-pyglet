@@ -80,7 +80,7 @@ def update(dt):
             score += 1
             score_label.text = f"Caught {score}"
 
-            gotcha_sound_effect = pyglet.media.load('./resources/bullet.wav', streaming=False)
+            gotcha_sound_effect = pyglet.media.load('./resources/win.wav', streaming=False)
             gotcha_sound_effect.play()
 
             # Add a new monster
