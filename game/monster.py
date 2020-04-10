@@ -33,7 +33,7 @@ class Monster(physicalobject.PhysicalObject):
         
         # This expression means: there is a 50%
         # chance we will change our horizontal direction.
-        if randint(0, 100) > 50:
+        if randint(0, 100) > 20:
             self.velocity_x *= -1
             
         # This expression means: there is a 50%
