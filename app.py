@@ -77,7 +77,7 @@ def update(dt):
             # Remove the object from our list
             game_objects.remove(to_remove)
 
-            score += 1
+            score += 10
             score_label.text = f"Caught {score}"
 
             gotcha_sound_effect = pyglet.media.load('./resources/win.wav', streaming=False)
