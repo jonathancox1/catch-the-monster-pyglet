@@ -79,6 +79,8 @@ def update(dt):
 
             score += 10
             score_label.text = f"Caught {score}"
+            if score >= 100:
+                game_over()
 
             gotcha_sound_effect = pyglet.media.load('./resources/win.wav', streaming=False)
             gotcha_sound_effect.play()
