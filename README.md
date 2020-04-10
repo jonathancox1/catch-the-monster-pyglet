@@ -22,7 +22,7 @@ python3 app.py
 ```
 
 
-# Explore
+# Explore11111
 
 - Move the score text so it's not in the way ;)
 - Change how fast our player can move
