@@ -22,8 +22,14 @@ score_label = pyglet.text.Label(text="Caught 0", x=15, y=15, batch=main_batch)
 hero = player.Player(x=400, y=300, batch=main_batch)
 goblin = monster.Monster(x=randint(0, WIDTH), y=randint(0,HEIGHT), batch=main_batch)
 
+
+
+#adding new monster
+new_goblin = monster.Monster(x=randint(0, WIDTH), y=randint(0, HEIGHT), batch=main_batch)
+
+
 # Store all objects that update each frame in a list
-game_objects = [hero, goblin]
+game_objects = [hero, goblin, new_goblin]
 
 # Tell the main window that the player object responds to events
 game_window.push_handlers(hero.key_handler)
@@ -88,6 +94,8 @@ def update(dt):
             # Add a new monster
             new_goblin = monster.Monster(x=randint(0, WIDTH), y=randint(0, HEIGHT), batch=main_batch)
             game_objects.append(new_goblin)
+
+
 
 
 if __name__ == "__main__":
