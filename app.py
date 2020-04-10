@@ -1,5 +1,5 @@
 import pyglet
-from game import player, monster, resources
+from game import player, monster, goblin, resources
 from random import randint
 
 from config import WIDTH, HEIGHT
@@ -22,8 +22,14 @@ score_label = pyglet.text.Label(text="Caught 0", x=15, y=15, batch=main_batch)
 hero = player.Player(x=400, y=300, batch=main_batch)
 goblin = monster.Monster(x=randint(0, WIDTH), y=randint(0,HEIGHT), batch=main_batch)
 
+
+
+#adding new monster
+new_goblin = monster.Monster(x=randint(0, WIDTH), y=randint(0, HEIGHT), batch=main_batch)
+
+
 # Store all objects that update each frame in a list
-game_objects = [hero, goblin]
+game_objects = [hero, goblin, new_goblin]
 
 # Tell the main window that the player object responds to events
 game_window.push_handlers(hero.key_handler)
@@ -41,9 +47,9 @@ is_drawing = True  # Controls whether to show movement
 
 def game_over():
     global is_drawing
-
     is_drawing = False
     music.pause()
+    print('You Win')
 
 
 def update(dt):
@@ -77,8 +83,10 @@ def update(dt):
             # Remove the object from our list
             game_objects.remove(to_remove)
 
-            score += 1
+            score += 10
             score_label.text = f"Caught {score}"
+            if score >= 100:
+                game_over()
 
             gotcha_sound_effect = pyglet.media.load('./resources/win.wav', streaming=False)
             gotcha_sound_effect.play()
@@ -86,6 +94,8 @@ def update(dt):
             # Add a new monster
             new_goblin = monster.Monster(x=randint(0, WIDTH), y=randint(0, HEIGHT), batch=main_batch)
             game_objects.append(new_goblin)
+
+
 
 
 if __name__ == "__main__":
