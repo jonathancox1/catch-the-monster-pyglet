@@ -17,6 +17,7 @@ music.queue(theme_song)
 
 # Set up the two top labels
 score_label = pyglet.text.Label(text="Caught 0", x=15, y=15, batch=main_batch)
+win_label = pyglet.text.Label(text='You Won!', x=game_window.width//2, y=game_window.width//2, anchor_x='center', anchor_y='center')
 
 # Initialize the player sprite
 hero = player.Player(x=400, y=300, batch=main_batch)
@@ -36,7 +37,7 @@ game_window.push_handlers(hero.key_handler)
 
 @game_window.event
 def on_draw():
-    game_window.clear()
+    # game_window.clear()
     resources.background.blit(0, 0)
     main_batch.draw()
 
@@ -49,7 +50,14 @@ def game_over():
     global is_drawing
     is_drawing = False
     music.pause()
-    print('You Win')
+    #print you've won
+    @game_window.event
+    def on_draw():
+        game_window.clear()
+        win_label.draw()
+
+    
+    
 
 
 def update(dt):
@@ -83,7 +91,10 @@ def update(dt):
             # Remove the object from our list
             game_objects.remove(to_remove)
 
-            score += 10
+            win_label.draw()
+
+
+            score += 50
             score_label.text = f"Caught {score}"
             if score >= 100:
                 game_over()
